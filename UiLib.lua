@@ -1,5 +1,6 @@
 local Library = {}
 
+-- Создание окна
 function Library:CreateWindow(title)
     local screenGui = Instance.new("ScreenGui")
     screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -42,6 +43,7 @@ function Library:CreateWindow(title)
     }
 end
 
+-- Создание вкладки
 function Library:CreateTab(tabHolder, name, contentFrame)
     local tabButton = Instance.new("TextButton")
     tabButton.Parent = tabHolder
@@ -71,6 +73,7 @@ function Library:CreateTab(tabHolder, name, contentFrame)
     return tabContent
 end
 
+-- Создание надписи
 function Library:CreateLabel(parent, text)
     local label = Instance.new("TextLabel")
     label.Parent = parent
@@ -84,22 +87,25 @@ function Library:CreateLabel(parent, text)
     return label
 end
 
--- Добавленный метод CreateButton
+-- Создание кнопки
 function Library:CreateButton(parent, text, callback)
     local button = Instance.new("TextButton")
     button.Parent = parent
-    button.Size = UDim2.new(0, 200, 0, 30)
-    button.Text = text
-    button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    button.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-    button.TextSize = 14
-    button.Font = Enum.Font.SourceSans
-    button.BorderSizePixel = 0
+    button.Size = UDim2.new(0, 200, 0, 30) -- Размер кнопки
+    button.Text = text -- Текст кнопки
+    button.TextColor3 = Color3.fromRGB(255, 255, 255) -- Цвет текста
+    button.BackgroundColor3 = Color3.fromRGB(40, 40, 40) -- Цвет фона кнопки
+    button.TextSize = 14 -- Размер текста
+    button.Font = Enum.Font.SourceSans -- Шрифт текста
+    button.BorderSizePixel = 0 -- Убираем границу
+
+    -- Добавляем функцию, которая будет вызвана при нажатии
     button.MouseButton1Click:Connect(function()
         if callback then
             callback()
         end
     end)
+
     return button
 end
 
